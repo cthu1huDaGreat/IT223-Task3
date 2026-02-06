@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
@@ -203,23 +203,11 @@
   </aside>
 
   <div class="page-content">
-        <style>
-      .page-content { background: transparent; }
-      .function-card { background: rgba(6, 11, 20, 0.6); border: 1px solid rgba(0, 229, 255, 0.1); border-radius: 12px; padding: 2rem; margin-bottom: 2rem; }
-      .function-card h2 { color: #0ca0b1; font-size: 1.8rem; }
-      .function-card h3 { color: #7b4db8; margin-top: 1.5rem; }
-      .function-card p { color: #8a9aaa; }
-      .function-card code { background: rgba(0, 155, 155, 0.1); color: #0ca0b1; padding: 0.2rem 0.6rem; border-radius: 4px; font-family: Courier New; }
-      .function-card pre { background: rgba(6, 11, 20, 0.9); border: 1px solid rgba(0, 229, 255, 0.08); padding: 1rem; overflow-x: auto; color: #0ca0b1; }
-      .example-table { background: rgba(6, 11, 20, 0.5); border: 1px solid rgba(0, 229, 255, 0.08); border-radius: 8px; }
-      .example-table thead { background: rgba(6, 11, 20, 0.8); color: #0ca0b1; }
-      .example-table td { color: #7a8a99; padding: 1rem; }
-    </style>
     <div class="container-fluid p-5">
       <div class="function-card">
         <h2><i class='bi bi-calendar-event me-2'></i>ABS Function</h2>
         <h3>Description</h3>
-        <p>The ABS() function returns the absolute (positive) value of a number..</p>
+        <p>The <code>ABS()</code> function returns the absolute (positive) value of a number..</p>
         <h3>Syntax</h3>
         <pre><code>ABS(number)</code></pre>
         <h3>Returns</h3>
@@ -228,9 +216,30 @@
       <div class="function-card">
         <h3>Database Examples</h3>
         <table class="table example-table">
-          <thead><tr><th>Result</th></tr></thead>
+          <thead>
+            <tr>
+              <th>Salary</th>
+              <th>Absolute Value</th>
+            </tr>
+          </thead>
           <tbody>
-            <?php include "../../config.php"; $result = $conn->query("SELECT ABS(-5) as result LIMIT 1"); $row = $result->fetch_assoc(); echo "<tr><td><code>" . htmlspecialchars($row["result"]) . "</code></td></tr>"; $conn->close(); ?>
+            <?php
+              include "../../config.php";
+              $sql = "SELECT Salary, ABS(Salary) as result FROM employee WHERE ID = 2 LIMIT 1";
+              $result = $conn->query($sql);
+              if ($result) {
+                while ($row = $result->fetch_assoc()) {
+                  echo "<tr>";
+                  echo "<td><code>" . htmlspecialchars($row['Salary']) . "</code></td>";
+                  echo "<td><code>" . htmlspecialchars($row['result']) . "</code></td>";
+                  echo "</tr>";
+                }
+                $result->free();
+              } else {
+                echo "<tr><td colspan=\"4\">Query error: " . htmlspecialchars($conn->error) . "</td></tr>";
+              }
+              $conn->close();
+        ?>
           </tbody>
         </table>
       </div>
