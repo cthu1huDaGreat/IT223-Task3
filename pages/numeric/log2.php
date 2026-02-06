@@ -203,6 +203,46 @@
   </aside>
 
   <div class="page-content">
+     <style>
+      .page-content { background: transparent; }
+      .function-card { background: rgba(6, 11, 20, 0.6); border: 1px solid rgba(0, 229, 255, 0.1); border-radius: 12px; padding: 2rem; margin-bottom: 2rem; }
+      .function-card h2 { color: #0ca0b1; font-size: 1.8rem; }
+      .function-card h3 { color: #7b4db8; margin-top: 1.5rem; }
+      .function-card p { color: #8a9aaa; }
+      .function-card code { background: rgba(0, 155, 155, 0.1); color: #0ca0b1; padding: 0.2rem 0.6rem; border-radius: 4px; font-family: Courier New; }
+      .function-card pre { background: rgba(6, 11, 20, 0.9); border: 1px solid rgba(0, 229, 255, 0.08); padding: 1rem; overflow-x: auto; color: #0ca0b1; }
+      .example-table { background: rgba(6, 11, 20, 0.5); border: 1px solid rgba(0, 229, 255, 0.08); border-radius: 8px; }
+      .example-table thead { background: rgba(6, 11, 20, 0.8); color: #0ca0b1; }
+      .example-table td { color: #7a8a99; padding: 1rem; }
+    </style>
+    <div class="container-fluid p-5">
+      <div class="function-card">
+        <h2><i class='bi bi-calendar-event me-2'></i>LOG2 Function</h2>
+        <h3>Description</h3>
+        <p>The LOG2() function returns the base-2 logarithm of a number.
+
+The specified number must be greater than 0, otherwise this function returns NULL. </p>
+        <h3>Syntax</h3>
+        <pre><code>LOG2(number)</code></pre>
+        <h3>Parameter Values</h3>
+        <ul style="color: #e6eef3;"><li>number: The number to be calculated base-2 logarithm of</li></ul>
+      </div>
+      <div class="function-card">
+        <h3>Database Examples</h3>
+        <table class="table example-table">
+          <thead><tr><th>Result</th></tr></thead>
+          <tbody>
+            <?php include "../../config.php"; $result = $conn->query("SELECT LOG2(10) as result LIMIT 1"); $row = $result->fetch_assoc(); echo "<tr><td><code>" . htmlspecialchars($row["result"]) . "</code></td></tr>"; $conn->close(); ?>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
   </div>
 
 </body>
