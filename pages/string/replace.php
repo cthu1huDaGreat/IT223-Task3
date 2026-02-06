@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
@@ -8,7 +8,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="../../style.css" rel="stylesheet">
+    <link href="/IT223-TASK3/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -202,11 +202,55 @@
     </nav>
   </aside>
 
-  <div class="page-content">
+<div class="page-content">
+  <div class="function-card">
+    <h2><i class="bi bi-type me-2"></i>REPLACE Function</h2>
+    <h3>Description</h3>
+    <p>The <code>REPLACE()</code> function replaces all occurrences of a substring within a string with another substring.</p>
+    <h3>Syntax</h3>
+    <pre><code>REPLACE(string, from_string, to_string)</code></pre>
+    <h3>Returns</h3>
+    <ul style="color: #e6eef3;">
+      <li>A new string with all occurrences of <code>from_string</code> replaced by <code>to_string</code></li>
+    </ul>
   </div>
+
+  <div class="function-card">
+    <h3>Database Examples</h3>
+    <table class="table example-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Result of REPLACE(Name, 'a', 'X')</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+          include "../../config.php";
+              $sql = "SELECT ID, Name, Department, REPLACE(Name, 'a', 'X') AS replaced_value FROM employee LIMIT 20";
+              $result = $conn->query($sql);
+              if ($result) {
+                while ($row = $result->fetch_assoc()) {
+                  echo "<tr>";
+                  echo "<td><code>" . htmlspecialchars($row['Name']) . "</code></td>";
+                  echo "<td><code>" . htmlspecialchars($row['replaced_value']) . "</code></td>";
+                  echo "</tr>";
+                }
+                $result->free();
+              } else {
+                echo "<tr><td colspan=\"4\">Query error: " . htmlspecialchars($conn->error) . "</td></tr>";
+              }
+              $conn->close();
+        ?>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 </body>
 </html>
+
+
 
 
 
