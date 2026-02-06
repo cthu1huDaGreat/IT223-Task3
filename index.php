@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
@@ -203,8 +203,17 @@
     </nav>
   </aside>
 
-  <div class="page-content">
-  </div>
+<div class="page-content">
+  <div class="function-card">
+    <h2>SQL Funtions</h2>
+    <h3>By:</h3>
+    <p>Ivan Clark Gaan</p>
+    <p>Erick Cyle Embodo</p>
+    <p>Angel Claire Ramos</p>
+
+</div>
 
 </body>
 </html>
+
+
