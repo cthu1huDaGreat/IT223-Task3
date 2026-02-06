@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
@@ -8,7 +8,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="../../style.css" rel="stylesheet">
+    <link href="/IT223-TASK3/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -202,11 +202,57 @@
     </nav>
   </aside>
 
-  <div class="page-content">
+<div class="page-content">
+  <div class="function-card">
+    <h2><i class="bi bi-type me-2"></i>STRCMP Function</h2>
+    <h3>Description</h3>
+    <p>The <code>STRCMP()</code> function compares two strings and returns an integer value based on their comparison.</p>
+    <h3>Syntax</h3>
+    <pre><code>STRCMP(string1, string2)</code></pre>
+    <h3>Returns</h3>
+    <ul style="color: #e6eef3;">
+      <li>Returns 0 if the strings are equal.</li>
+      <li>Returns 1 if the first string is greater than the second string.</li>
+      <li>Returns -1 if the first string is less than the second string.</li>
+    </ul>
   </div>
+
+  <div class="function-card">
+    <h3>Database Examples</h3>
+    <table class="table example-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Result</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+          include "../../config.php";
+              $sql = "SELECT ID, Name, Department, STRCMP(Name, 'John') AS result FROM employee LIMIT 20";
+              $result = $conn->query($sql);
+              if ($result) {
+                while ($row = $result->fetch_assoc()) {
+                  echo "<tr>";
+                  echo "<td><code>" . htmlspecialchars($row['Name']) . "</code></td>";
+                  echo "<td><code>" . htmlspecialchars($row['result']) . "</code></td>";
+                  echo "</tr>";
+                }
+                $result->free();
+              } else {
+                echo "<tr><td colspan=\"4\">Query error: " . htmlspecialchars($conn->error) . "</td></tr>";
+              }
+              $conn->close();
+        ?>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 </body>
 </html>
+
+
 
 
 
